@@ -1,2 +1,2 @@
-# java-sb-recipe-nest
+# RecipeNest
 Recipe Sharing Platform
