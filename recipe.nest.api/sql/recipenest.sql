@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-10-2024 a las 05:30:19
+-- Tiempo de generación: 19-10-2024 a las 21:14:19
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -26,6 +26,43 @@ USE `recipenest`;
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `dbo_ingredients`
+--
+
+CREATE TABLE `dbo_ingredients` (
+  `id` bigint(20) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `dbo_recipes`
+--
+
+CREATE TABLE `dbo_recipes` (
+  `id` bigint(20) NOT NULL,
+  `description` longtext DEFAULT NULL,
+  `title` varchar(255) NOT NULL,
+  `user_id` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `dbo_recipe_ingredients`
+--
+
+CREATE TABLE `dbo_recipe_ingredients` (
+  `id` bigint(20) NOT NULL,
+  `quantity` varchar(255) NOT NULL,
+  `ingredient_id` bigint(20) NOT NULL,
+  `recipe_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `dbo_users`
 --
 
@@ -42,11 +79,33 @@ CREATE TABLE `dbo_users` (
 --
 
 INSERT INTO `dbo_users` (`id_user`, `name`, `password`, `role`, `username`) VALUES
-(1, 'Eliezer Navarro', '$2a$10$DRtD6u4iWycTIrKGcrYuTOITp0JZq88lClhTIgzJ3YMvzlB7LnWOG', 'USER', 'enp');
+(1, 'Eliezer Navarro', '$2a$10$DRtD6u4iWycTIrKGcrYuTOITp0JZq88lClhTIgzJ3YMvzlB7LnWOG', 'USER', 'enp'),
+(2, 'Rayme Velandia', '$2a$10$DRtD6u4iWycTIrKGcrYuTOITp0JZq88lClhTIgzJ3YMvzlB7LnWOG', 'USER', 'raymevg');
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `dbo_ingredients`
+--
+ALTER TABLE `dbo_ingredients`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `dbo_recipes`
+--
+ALTER TABLE `dbo_recipes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK41h8ish3ygejaqwylu468to80` (`user_id`);
+
+--
+-- Indices de la tabla `dbo_recipe_ingredients`
+--
+ALTER TABLE `dbo_recipe_ingredients`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FKkf699q8grpbwhh9dy2nk4i46e` (`ingredient_id`),
+  ADD KEY `FKp273we2eitsx2aj9e7xhmuhtn` (`recipe_id`);
 
 --
 -- Indices de la tabla `dbo_users`
@@ -59,10 +118,45 @@ ALTER TABLE `dbo_users`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `dbo_ingredients`
+--
+ALTER TABLE `dbo_ingredients`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `dbo_recipes`
+--
+ALTER TABLE `dbo_recipes`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `dbo_recipe_ingredients`
+--
+ALTER TABLE `dbo_recipe_ingredients`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `dbo_users`
 --
 ALTER TABLE `dbo_users`
-  MODIFY `id_user` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_user` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `dbo_recipes`
+--
+ALTER TABLE `dbo_recipes`
+  ADD CONSTRAINT `FK41h8ish3ygejaqwylu468to80` FOREIGN KEY (`user_id`) REFERENCES `dbo_users` (`id_user`);
+
+--
+-- Filtros para la tabla `dbo_recipe_ingredients`
+--
+ALTER TABLE `dbo_recipe_ingredients`
+  ADD CONSTRAINT `FKkf699q8grpbwhh9dy2nk4i46e` FOREIGN KEY (`ingredient_id`) REFERENCES `dbo_ingredients` (`id`),
+  ADD CONSTRAINT `FKp273we2eitsx2aj9e7xhmuhtn` FOREIGN KEY (`recipe_id`) REFERENCES `dbo_recipes` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
