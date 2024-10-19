@@ -44,6 +44,10 @@ public class WebSecurityConfig {
                     //registry.requestMatchers("/swagger-ui/**").permitAll();
                     //registry.requestMatchers("/v3/api-docs/**").permitAll();
                     registry.requestMatchers(HttpMethod.POST, "/api/v1/recipenest/auth").permitAll();
+                    //USER
+                    registry.requestMatchers(HttpMethod.GET,  "/api/v1/recipenest/users/**").hasRole("USER");
+                    registry.requestMatchers(HttpMethod.POST, "/api/v1/recipenest/users/register").hasRole("USER");
+                    registry.requestMatchers(HttpMethod.PUT,  "/api/v1/recipenest/users/**").hasRole("USER");
                     /*
                     //USER
                     registry.requestMatchers(HttpMethod.GET,  "/api/v1/reservite/user/**").hasRole("USER");
