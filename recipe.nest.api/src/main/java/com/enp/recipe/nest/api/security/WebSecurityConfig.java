@@ -43,7 +43,8 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(registry -> {
                     //registry.requestMatchers("/swagger-ui/**").permitAll();
                     //registry.requestMatchers("/v3/api-docs/**").permitAll();
-                    registry.requestMatchers(HttpMethod.POST, "/api/v1/reservite/auth").permitAll();
+                    registry.requestMatchers(HttpMethod.POST, "/api/v1/recipenest/auth").permitAll();
+                    /*
                     //USER
                     registry.requestMatchers(HttpMethod.GET,  "/api/v1/reservite/user/**").hasRole("USER");
                     registry.requestMatchers(HttpMethod.POST, "/api/v1/reservite/user").hasRole("USER");
@@ -66,7 +67,9 @@ public class WebSecurityConfig {
                     registry.requestMatchers(HttpMethod.GET , "/api/v1/reservite/dashboard").hasRole("USER");
                     //NOTIFICATIONS
                     registry.requestMatchers(HttpMethod.GET , "/api/v1/reservite/notification").hasRole("USER");
-                    /*
+                    
+                    
+                    
                     registry.requestMatchers(HttpMethod.GET,  "/api/v1/taskflow/task/followup/**").hasRole("USER");
                     registry.requestMatchers(HttpMethod.POST, "/api/v1/taskflow/task/followup").hasRole("USER");
                     registry.requestMatchers(HttpMethod.PUT,  "/api/v1/taskflow/task/followup").hasRole("USER");
