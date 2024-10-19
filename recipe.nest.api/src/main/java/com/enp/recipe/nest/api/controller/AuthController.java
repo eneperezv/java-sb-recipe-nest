@@ -45,7 +45,6 @@ public class AuthController {
                 return convertObjectToJson(new Token(jwtService.generateToken(userDetailService.loadUserByUsername(loginForm.username()))));
             } else {
             	return convertObjectToJson(new ErrorDetails(new Date(),HttpStatus.UNAUTHORIZED.toString(),"Credenciales no autorizadas"));
-                //throw new UsernameNotFoundException("Invalid credentials");
             }
         }catch(Exception e) {
         	System.out.println("ERROR-->"+e.getMessage()+"<--");
