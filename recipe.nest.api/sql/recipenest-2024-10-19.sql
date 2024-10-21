@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-10-2024 a las 05:06:40
+-- Tiempo de generación: 19-10-2024 a las 21:14:19
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -34,20 +34,6 @@ CREATE TABLE `dbo_ingredients` (
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `dbo_ingredients`
---
-
-INSERT INTO `dbo_ingredients` (`id`, `name`) VALUES
-(1, 'Pasta'),
-(2, 'Albahaca fresca'),
-(3, 'Queso parmesano'),
-(4, 'Piñones'),
-(5, 'Ajo'),
-(6, 'Aceite de oliva'),
-(7, 'Sal'),
-(8, 'Pimienta');
-
 -- --------------------------------------------------------
 
 --
@@ -60,13 +46,6 @@ CREATE TABLE `dbo_recipes` (
   `title` varchar(255) NOT NULL,
   `user_id` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `dbo_recipes`
---
-
-INSERT INTO `dbo_recipes` (`id`, `description`, `title`, `user_id`) VALUES
-(2, 'Un plato clásico de la cocina italiana, con pasta fresca cubierta de una cremosa salsa de pesto casera hecha con albahaca, piñones y queso parmesano. Ideal para una cena rápida y deliciosa.', 'Pasta al Pesto', 1);
 
 -- --------------------------------------------------------
 
@@ -142,13 +121,13 @@ ALTER TABLE `dbo_users`
 -- AUTO_INCREMENT de la tabla `dbo_ingredients`
 --
 ALTER TABLE `dbo_ingredients`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `dbo_recipes`
 --
 ALTER TABLE `dbo_recipes`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `dbo_recipe_ingredients`
