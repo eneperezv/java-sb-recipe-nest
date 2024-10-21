@@ -1,5 +1,9 @@
 package com.enp.recipe.nest.api.repository;
 
-public interface RecipeRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.enp.recipe.nest.api.model.Recipe;
+
+public interface RecipeRepository extends JpaRepository<Recipe, Long> {
 
 }

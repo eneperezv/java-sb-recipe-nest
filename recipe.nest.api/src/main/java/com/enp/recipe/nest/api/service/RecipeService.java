@@ -6,9 +6,14 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.enp.recipe.nest.api.dto.RecipeDto;
+import com.enp.recipe.nest.api.dto.RecipeIngredientDto;
 import com.enp.recipe.nest.api.model.Ingredient;
 import com.enp.recipe.nest.api.model.Recipe;
 import com.enp.recipe.nest.api.model.RecipeIngredient;
+import com.enp.recipe.nest.api.repository.IngredientRepository;
+import com.enp.recipe.nest.api.repository.RecipeIngredientRepository;
+import com.enp.recipe.nest.api.repository.RecipeRepository;
 
 @Service
 public class RecipeService {
@@ -21,7 +26,8 @@ public class RecipeService {
 
     @Autowired
     private RecipeIngredientRepository recipeIngredientRepository;
-
+    
+    /*
     public RecipeDto createRecipe(RecipeDto recipeDTO) {
         Recipe recipe = new Recipe();
         recipe.setTitle(recipeDTO.getTitle());
@@ -63,5 +69,5 @@ public class RecipeService {
 
         return new RecipeDto(recipe.getId(), recipe.getTitle(), recipe.getDescription(), ingredients);
     }
-
+	*/
 }
