@@ -7,6 +7,7 @@ public class RecipeDto {
 	private Long id;
     private String title;
     private String description;
+    private UserDto user;
     private List<RecipeIngredientDto> ingredients;
     
     public RecipeDto() {
@@ -37,6 +38,14 @@ public class RecipeDto {
 		this.description = description;
 	}
 
+	public UserDto getUser() {
+		return user;
+	}
+
+	public void setUser(UserDto user) {
+		this.user = user;
+	}
+
 	public List<RecipeIngredientDto> getIngredients() {
 		return ingredients;
 	}
@@ -47,7 +56,8 @@ public class RecipeDto {
 
 	@Override
 	public String toString() {
-		return "RecipeIngredientDto [id=" + id + ", title=" + title + ", description=" + description + "]";
+		return "RecipeDto [id=" + id + ", title=" + title + ", description=" + description + ", user=" + user
+				+ ", ingredients=" + ingredients + "]";
 	}
 
 }
