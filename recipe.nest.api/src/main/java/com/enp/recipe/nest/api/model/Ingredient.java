@@ -25,6 +25,10 @@ public class Ingredient {
 
     @OneToMany(mappedBy = "ingredient", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<RecipeIngredient> recipeIngredients = new ArrayList<>();
+    
+    public Ingredient() {
+    	
+    }
 
 	public Ingredient(String name, List<RecipeIngredient> recipeIngredients) {
 		super();
