@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.enp.recipe.nest.api.dto.IngredientDto;
-import com.enp.recipe.nest.api.dto.UserDto;
 import com.enp.recipe.nest.api.model.ErrorDetails;
 import com.enp.recipe.nest.api.model.ResponseDetails;
 import com.enp.recipe.nest.api.service.IngredientService;
@@ -23,7 +22,7 @@ public class IngredientController {
 	@Autowired
 	private IngredientService ingredientService;
 	
-	@PostMapping()
+	@PostMapping("/create")
 	public ResponseDetails<?> createIngredient(@RequestBody IngredientDto ingredientDto) {
 		IngredientDto savedIngredientDto;
 		try{
