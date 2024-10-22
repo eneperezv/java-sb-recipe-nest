@@ -3,6 +3,8 @@ package com.enp.recipe.nest.api.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.enp.recipe.nest.api.dto.UserDto;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
