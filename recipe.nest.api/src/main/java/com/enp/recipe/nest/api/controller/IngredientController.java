@@ -13,7 +13,7 @@ package com.enp.recipe.nest.api.controller;
  * Clase controller para gestion de reservas
  *
  * @author eliezer.navarro
- * @version 1.0 | 12/09/2024
+ * @version 1.0
  * @since 1.0
  */
 
