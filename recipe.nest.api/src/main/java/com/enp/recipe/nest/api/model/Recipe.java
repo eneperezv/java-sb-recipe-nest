@@ -31,7 +31,7 @@ public class Recipe {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private UserDto user;
 
     @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<RecipeIngredient> recipeIngredients = new ArrayList<>();
@@ -40,7 +40,7 @@ public class Recipe {
     	
     }
 
-	public Recipe(String title, String description, User user, List<RecipeIngredient> recipeIngredients) {
+	public Recipe(String title, String description, UserDto user, List<RecipeIngredient> recipeIngredients) {
 		super();
 		this.title = title;
 		this.description = description;
@@ -72,11 +72,11 @@ public class Recipe {
 		this.description = description;
 	}
 
-	public User getUser() {
+	public UserDto getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(UserDto user) {
 		this.user = user;
 	}
 
