@@ -50,7 +50,7 @@ public class Recipe {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private UserDto user;
+    private User user;
 
     @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<RecipeIngredient> recipeIngredients = new ArrayList<>();
@@ -59,7 +59,7 @@ public class Recipe {
     	
     }
 
-	public Recipe(String title, String description, UserDto user, List<RecipeIngredient> recipeIngredients) {
+	public Recipe(String title, String description, User user, List<RecipeIngredient> recipeIngredients) {
 		super();
 		this.title = title;
 		this.description = description;
@@ -91,11 +91,11 @@ public class Recipe {
 		this.description = description;
 	}
 
-	public UserDto getUser() {
+	public User getUser() {
 		return user;
 	}
 
-	public void setUser(UserDto user) {
+	public void setUser(User user) {
 		this.user = user;
 	}
 
