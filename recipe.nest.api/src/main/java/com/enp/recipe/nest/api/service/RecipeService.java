@@ -32,6 +32,9 @@ public class RecipeService {
 	@Autowired
     private RecipeRepository recipeRepository;
 	
+	@Autowired
+	private UserService userService;
+	
 	public RecipeDto createUser(RecipeDto recipeDto) {
 		return buildDto(Optional.of(recipeRepository.save(buildEntity(recipeDto))));
 	}
@@ -41,7 +44,7 @@ public class RecipeService {
 		recipe.setId(recipeDto.getId());
 		recipe.setTitle(recipeDto.getTitle());
 		recipe.setDescription(recipeDto.getDescription());
-		recipe.setUser(recipeDto.getUser());
+		recipe.setUser(userService.buildEntity(recipeDto.getUser()));
 		return recipe;
 	}
 	
@@ -50,7 +53,16 @@ public class RecipeService {
 		recipeDto.setId(optional.get().getId());
 		recipeDto.setTitle(optional.get().getTitle());
 		recipeDto.setDescription(optional.get().getDescription());
-		recipeDto.setUser(optional.get().getUser());
+		recipeDto.setUser(userService.buildDtoFromUser(optional.get().getUser()));
+		return recipeDto;
+	}
+	
+	public RecipeDto buildDtoFromRecipe(Recipe recipe) {
+		RecipeDto recipeDto = new RecipeDto();
+		recipeDto.setId(recipe.getId());
+		recipeDto.setTitle(recipe.getTitle());
+		recipeDto.setDescription(recipe.getDescription());
+		recipeDto.setUser(userService.buildDtoFromUser(recipe.getUser()));
 		return recipeDto;
 	}
 
