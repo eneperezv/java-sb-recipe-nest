@@ -22,10 +22,9 @@ public class SwaggerConfig {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.example.yourproject")) // Reemplaza con el paquete base de tus controladores
-                .paths(PathSelectors.any())
-                .build()
-                .apiInfo(apiInfo());
+                .apis(RequestHandlerSelectors.any()) // Selecciona todos los controladores
+                .paths(PathSelectors.any()) // Selecciona todas las rutas
+                .build();
     }
 
 	private ApiInfo apiInfo() {
